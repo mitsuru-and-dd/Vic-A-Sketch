@@ -16,3 +16,5 @@ A basic pixel art program for Commodore VIC-20 with Super Expander.
 
 ### Current bugs:
 - Changing to FASTMOV mode, while DELETE mode was on, then changing back to normal movement, will make it appear as if you are in DRAW mode. However, the program is still in DELETE mode. Press F3 to make sure you are in DRAW mode.
+
+No PRG files we type-in like it's 1981
