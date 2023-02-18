@@ -1,54 +1,54 @@
-3 GOSUB 1000
-5 X=1:Y=1:CC=2:BL=0:RC=0:MV=1
-10 GRAPHIC 2
-15 CHAR 19,0,"DRAW  "
-20 J=RJOY(0)
-30 JU=J AND 1
-40 JD=J AND 2
-50 JL=J AND 4
-60 JR=J AND 8
-65 JF=J AND 128
-380 DJ=0
-390 IF JU=1 AND BL=0 THEN JU=MV :DJ=1
-400 IF JD=2 AND BL=0 THEN JD=MV :DJ=1
-410 IF JL=4 AND BL=0 THEN JL=MV :DJ=1
-420 IF JR=8 AND BL=0 THEN JR=MV :DJ=1
-425 IF DJ=1 THEN GOSUB 601 :GOTO 550
-430 IF BL=0 THEN :POINT 2,X*6.4,Y*6.4 :BL=1 :GOTO550
-440 IF BL=1 THEN :POINT 0,X*6.4,Y*6.4 :BL=0
-550 K=PEEK(197)
-560 IF K=39 THEN CC=0 :CHAR 19,0,"DELETE"
-570 IF K=47 THEN CC=2 :CHAR 19,0,"DRAW  "
-580 IF K=8 THEN GOTO 800
-585 IF K=55 THEN MV=5 :CHAR 19,0,"NO-DRAW   FASTMOV ON"
-590 IF K=63 THEN MV=1 :CHAR 19,0,"DRAW                "
-600 GOTO 20
-601 REM
-603 IF RC=CH THEN :POINT 2,X*6.4,Y*6.4
-607 IF RC=BK THEN :POINT 0,X*6.4,Y*6.4
-610 Y=Y+JD-JU
-620 X=X+JR-JL
-630 IF X=0 THEN X=1
-640 IF X=161 THEN X=160
-650 IF Y=0 THEN Y=1
-660 IF Y=153 THEN Y=152
-670 IF JF=128 AND MV=1 THEN :POINT CC,X*6.4,Y*6.4
-680 RC=RDOT(X*6.4,Y*6.4)
-790 RETURN
-800 CHAR 19,10,"QUIT? Y/N "
-810 K=PEEK(197)
-820 IF K=11 THEN GOTO 850
-830 IF K=28 THEN :CHAR 19,10,"          " :MV=1 :GOTO20
-840 GOTO 810
-850 GRAPHIC 4
-855 COLOR 1,3,6,0
-870 END
-1000 PRINT "{shift+clr}**VIC-A-SKETCH BY DD**"
-1010 PRINT "SELECT YOUR COLORS."
-1015 PRINT "=1 FOR DEFAULT."
-1020 INPUT "BACKGROUND";BK
-1025 IF BK=25 THEN:BK=1:BR=3:CH=6:GOTO1050
-1030 INPUT"BORDER";BR
-1040 INPUT"PIXELS";CH
-1050 COLOR BK,BR,CH,0
-1060 RETURN
+3 gosub 1000
+5 x=1:y=1:cc=2:bl=0:rc=0:mv=1
+10 graphic 2
+15 char 19,0,"draw  "
+20 j=rjoy(0)
+30 ju=j and 1
+40 jd=j and 2
+50 jl=j and 4
+60 jr=j and 8
+65 jf=j and 128
+380 dj=0
+390 if ju=1 and bl=0 then ju=mv :dj=1
+400 if jd=2 and bl=0 then jd=mv :dj=1
+410 if jl=4 and bl=0 then jl=mv :dj=1
+420 if jr=8 and bl=0 then jr=mv :dj=1
+425 if dj=1 then gosub 601 :goto 550
+430 if bl=0 then :point 2,x*6.4,y*6.4 :bl=1 :goto550
+440 if bl=1 then :point 0,x*6.4,y*6.4 :bl=0
+550 k=peek(197)
+560 if k=39 then cc=0 :char 19,0,"delete"
+570 if k=47 then cc=2 :char 19,0,"draw  "
+580 if k=8 then goto 800
+585 if k=55 then mv=5 :char 19,0,"no-draw   fastmov on"
+590 if k=63 then mv=1 :char 19,0,"draw                "
+600 goto 20
+601 rem
+603 if rc=ch then :point 2,x*6.4,y*6.4
+607 if rc=bk then :point 0,x*6.4,y*6.4
+610 y=y+jd-ju
+620 x=x+jr-jl
+630 if x=0 then x=1
+640 if x=161 then x=160
+650 if y=0 then y=1
+660 if y=153 then y=152
+670 if jf=128 and mv=1 then :point cc,x*6.4,y*6.4
+680 rc=rdot(x*6.4,y*6.4)
+790 return
+800 char 19,10,"quit? y/n "
+810 k=peek(197)
+820 if k=11 then goto 850
+830 if k=28 then :char 19,10,"          " :mv=1 :goto20
+840 goto 810
+850 graphic 4
+855 color 1,3,6,0
+870 end
+1000 print "{shift+clr}**vic-a-sketch by dd**"
+1010 print "select your colors."
+1015 print "-1 for default."
+1020 input "background";bk
+1025 if bk=-1 then:bk=1:br=3:ch=6:goto1050
+1030 input"border";br
+1040 input"pixels";ch
+1050 color bk,br,ch,0
+1060 return
